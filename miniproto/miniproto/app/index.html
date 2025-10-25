@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MiniProto – Emisor</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header>
+    <h1>MiniProto – Emisor <span class="badge">LAN</span></h1>
+    <p>Encapsulación → Transmisión → (envío por WebSocket/REST)</p>
+  </header>
+
+  <section class="card">
+    <h2>1) Datos de Entrada</h2>
+    <div class="grid">
+      <label>Tipo de dato
+        <select id="contentType">
+          <option value="text/plain">Texto</option>
+          <option value="image/png">Imagen (PNG/JPG)</option>
+          <option value="video/mp4">Video (simulado)</option>
+        </select>
+      </label>
+      <label>Mensaje de texto
+        <input id="textInput" placeholder="Hola, Redes!" />
+      </label>
+      <label>Archivo (opcional)
+        <input id="fileInput" type="file" />
+      </label>
+      <label>Tipo de transmisión
+        <select id="txType">
+          <option value="unicast">Unicast</option>
+          <option value="broadcast">Broadcast</option>
+          <option value="multicast">Multicast</option>
+        </select>
+      </label>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>2) Parámetros de Red</h2>
+    <div class="grid">
+      <label>Src IP <input id="srcIP" value="10.0.0.1" /></label>
+      <label>Dst IP <input id="dstIP" value="10.0.0.99" /></label>
+      <label>Src MAC <input id="srcMAC" value="02:00:00:00:00:01" /></label>
+      <label>Dst MAC <input id="dstMAC" value="02:00:00:00:00:99" /></label>
+      <label>Src Port <input id="srcPort" value="4000" type="number"/></label>
+      <label>Dst Port <input id="dstPort" value="5000" type="number"/></label>
+      <label>TTL <input id="ttl" value="64" type="number"/></label>
+      <label>MTU <input id="mtu" value="512" type="number"/></label>
+    </div>
+
+    <div class="actions">
+      <button id="btnEncap">Encapsular</button>
+      <button id="btnSend" disabled>Transmitir a LAN</button>
+      <button id="btnError" disabled>Introducir error</button>
+      <button id="btnReset">Reiniciar</button>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>3) Visualización por Capas</h2>
+    <div class="layers">
+      <div class="layer" id="layerApp"><h3>Aplicación</h3><pre></pre></div>
+      <div class="layer" id="layerTrans"><h3>Transporte</h3><pre></pre></div>
+      <div class="layer" id="layerNet"><h3>Red</h3><pre></pre></div>
+      <div class="layer" id="layerLink"><h3>Enlace</h3><pre></pre></div>
+      <div class="layer" id="layerPhy"><h3>Física (HEX)</h3><pre></pre></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>4) Registro</h2>
+    <textarea id="log" rows="10" placeholder="Registro..." readonly></textarea>
+  </section>
+
+  <script type="module" src="emisor.js"></script>
+</body>
+</html>

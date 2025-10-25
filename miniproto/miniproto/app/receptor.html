@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MiniProto – Receptor</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header>
+    <h1>MiniProto – Receptor <span class="badge">LAN</span></h1>
+    <p>Decapsulación automática + Historial persistente</p>
+  </header>
+
+  <section class="card">
+    <h2>1) Estado</h2>
+    <div class="row">
+      <div id="status">Conectando al servidor…</div>
+      <div style="margin-left:auto"><button id="btnRefresh">Actualizar</button></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>2) Último frame recibido</h2>
+    <div class="layers">
+      <div class="layer"><h3>Decapsulación</h3><pre id="decap"></pre></div>
+      <div class="layer"><h3>Resultado</h3><pre id="result"></pre></div>
+      <div class="layer"><h3>HEX</h3><pre id="hex"></pre></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>3) Historial</h2>
+    <div id="history"></div>
+  </section>
+
+  <script type="module" src="receptor.js"></script>
+</body>
+</html>
